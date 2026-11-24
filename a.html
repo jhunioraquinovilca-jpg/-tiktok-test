@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok - Error</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            color: white;
+            padding: 40px;
+        }
+        .error {
+            font-size: 120px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ff0050;
+        }
+        p {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .hearts {
+            font-size: 60px;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .reveal {
+            margin-top: 40px;
+            padding: 20px;
+            background: #ff0050;
+            border-radius: 10px;
+            display: none;
+        }
+        .reveal.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #00f2ea;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error">⚠️</div>
+        <h1>ERROR 404</h1>
+        <p>Tu cuenta de TikTok ha sido comprometida</p>
+        
+        <div class="hearts">💖💕💗💓💖</div>
+        
+        <button onclick="mostrarBroma()">Ver detalles del hackeo</button>
+        
+        <div class="reveal" id="reveal">
+            <h2>🎉 ¡TE LA CREÍSTE! 🎉</h2>
+            <p style="font-size: 30px; margin: 20px 0;">
+                😂😂😂<br>
+                <strong>JAQUE MATE, COMPAÑERA</strong><br>
+                😂😂😂
+            </p>
+            <p style="font-size: 16px;">
+                Esto es lo que pasa por no verificar los certificados SSL 🔐<br>
+                #LecciónDeCiberseguridad
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function mostrarBroma() {
+            document.getElementById('reveal').classList.add('show');
+            
+            // Opcional: tocar sonido de broma
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTg0OUKXh8bllHAU2jdXvynYqBSh/zPDakTQK');
+            audio.play().catch(e => console.log('Audio no soportado'));
+        }
+
+        // Efecto de corazones flotando
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.innerHTML = ['💖', '💕', '💗', '💓', '❤️'][Math.floor(Math.random() * 5)];
+            heart.style.position = 'fixed';
+            heart.style.fontSize = Math.random() * 30 + 20 + 'px';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            heart.style.transition = 'all 3s linear';
+            heart.style.opacity = '0';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.style.top = '-50px';
+                heart.style.opacity = '1';
+            }, 100);
+            
+            setTimeout(() => heart.remove(), 3000);
+        }, 200);
+    </script>
+</body>
+</html>
